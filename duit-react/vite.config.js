@@ -15,7 +15,6 @@ export default () => {
             emptyOutDir: true,
             rollupOptions: {
                 output: {
-                    file: "duit.html",
                     format: "es",
                     entryFileNames: "[name].js",
                     assetFileNames: "[ext]/[name].[ext]",
