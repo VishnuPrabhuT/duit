@@ -1,11 +1,13 @@
-const cors = require("cors");
+var express = require("express");
+var router = express.Router();
+var { json } = require("body-parser");
 
-module.exports = function (app) {
-    var applications = require("../controllers/application.controller.js");
+var applications = require("../controllers/application.controller.js");
 
-    app.post("/api/application", applications.createApplication);
-    app.get("/api/application/:id", applications.getApplication);
-    app.get("/api/applications", applications.applications);
-    app.put("/api/Application", applications.updateApplication);
-    app.delete("/api/application/:id", applications.deleteApplication);
-};
+router.post("/api/application", applications.createApplication);
+router.get("/api/application/:id", applications.getApplication);
+router.get("/api/applications", applications.applications);
+router.put("/api/Application", applications.updateApplication);
+router.delete("/api/application/:id", applications.deleteApplication);
+
+module.exports = router;

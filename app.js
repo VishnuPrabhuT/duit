@@ -4,7 +4,12 @@ const sessions = require("express-session");
 var path = require("path");
 var logger = require("morgan");
 var bodyParser = require("body-parser");
+
+require("./models/application.model.js");
+require("./models/user.model.js");
 var indexRouter = require("./routes/index");
+var applicationRouter = require("./routes/application.router.js");
+var userRouter = require("./routes/user.router.js");
 
 var { isAuthenticated } = require("./authenticate.js");
 
@@ -14,9 +19,6 @@ const mongoose = require("mongoose");
 const { nextTick } = require("process");
 
 // app.use(cors());
-
-require("./models/application.model.js");
-require("./models/user.model.js");
 
 require("dotenv").config();
 
@@ -32,9 +34,6 @@ mongoose.connection
     .on("error", (err) => {
         console.log("Connection error:" + err.message);
     });
-
-require("./routes/application.router.js")(app);
-require("./routes/user.router.js")(app);
 
 app.set("view engine", "pug");
 
@@ -57,5 +56,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", indexRouter);
+app.use(applicationRouter);
+app.use(userRouter);
 
 module.exports = app;

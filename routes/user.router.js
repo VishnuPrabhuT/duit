@@ -1,11 +1,14 @@
+var express = require("express");
+var router = express.Router();
 var { json } = require("body-parser");
 
-module.exports = function (app) {
-    var applications = require("../controllers/user.controller.js");
+var users = require("../controllers/user.controller.js");
 
-    app.post("/api/user", json(), applications.createUser);
-    app.get("/api/user/:id", json(), applications.getUser);
-    app.get("/api/users", json(), applications.users);
-    app.put("/api/user", json(), applications.updateUser);
-    app.delete("/api/user/:id", json(), applications.deleteUser);
-};
+router.post("/api/signup", json(), users.signup);
+router.post("/api/login", json(), users.login);
+router.get("/api/user/:id", json(), users.getUser);
+router.get("/api/users", json(), users.users);
+router.put("/api/user", json(), users.updateUser);
+router.delete("/api/user/:id", json(), users.deleteUser);
+
+module.exports = router;

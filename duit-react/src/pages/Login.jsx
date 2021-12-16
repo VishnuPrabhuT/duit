@@ -1,18 +1,69 @@
+import { useEffect } from "react";
+
 import Card from "../components/card";
 import FormField from "../components/formfield";
 import FormButton from "../components/formbutton";
 
 import "../sass/login.sass";
+import { useState } from "react";
 
-function SignUp() {
+function Login() {
+    const [showMsg, setShowMsg] = useState(false);
+    const [msg, setMsg] = useState("");
+
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+
+    useEffect(() => {
+        //createUser();
+    });
+
+    async function createUser() {
+        let data = await fetch("/api/login", {
+            method: "POST",
+            headers: { "content-type": "application/json" },
+            body: JSON.stringify({ email: email, password: password }),
+        });
+        data = await data.json();
+
+        console.log(data);
+
+        setShowMsg(!data.status ? true : false);
+        setMsg(data.msg ? data.msg : "");
+        setInterval(() => {
+            setShowMsg(false);
+            setMsg("");
+        }, 5000);
+    }
+
     return (
-        <Card className="login-container">
+        <Card className="signup-container">
             <h1>Login</h1>
-            <FormField name="email" label="Email" type="email" />
-            <FormField name="password" label="Password" type="password" />
-            <FormButton name="Login" />
+            {!showMsg ? (
+                <>
+                    <FormField
+                        name="email"
+                        label="Email"
+                        type="email"
+                        onValueChange={(val) => {
+                            setEmail(val);
+                        }}
+                    />
+                    <FormField
+                        name="password"
+                        label="Password"
+                        type="password"
+                        onValueChange={(val) => {
+                            setPassword(val);
+                        }}
+                    />
+                    <FormButton name="Login" onClickHandler={createUser} />
+                </>
+            ) : (
+                <h3>{msg}</h3>
+            )}
         </Card>
     );
 }
 
-export default SignUp;
+export default Login;

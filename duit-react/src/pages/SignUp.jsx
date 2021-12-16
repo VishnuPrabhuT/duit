@@ -19,7 +19,7 @@ function SignUp() {
     });
 
     async function createUser() {
-        let data = await fetch("/api/user", {
+        let data = await fetch("/api/signup", {
             method: "POST",
             headers: { "content-type": "application/json" },
             body: JSON.stringify({ email: email, password: password }),

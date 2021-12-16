@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const User = mongoose.model("User");
 
-exports.createUser = (req, res) => {
+exports.signup = (req, res) => {
     const user = new User({
         email: req.body.email,
         password: req.body.password,
@@ -32,6 +32,34 @@ exports.createUser = (req, res) => {
                 });
         }
     });
+};
+
+exports.login = (req, res) => {
+    const user = new User({
+        email: req.body.email,
+        password: req.body.password,
+    });
+
+    User.findOne({ email: req.body.email, password: req.body.password }).then(
+        (userObj) => {
+            if (userObj) {
+                req.session.loggedIn = true;
+                req.session.email = req.body.username;
+
+                let resObj = Object.assign({}, userObj._doc);
+                resObj.msg = "Login Successful!";
+
+                res.status(200).json(resObj);
+            } else {
+                let resObj = {
+                    status: false,
+                    msg: "Username or Password Incorrect!",
+                };
+
+                res.status(200).json(resObj);
+            }
+        }
+    );
 };
 
 exports.getUser = (req, res) => {
