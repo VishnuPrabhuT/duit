@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
     BrowserRouter as Router,
     Routes,
@@ -18,7 +18,14 @@ import "./sass/app.sass";
 import Header from "/@components/header";
 
 function App() {
-    const [count, setCount] = useState(0);
+    const [loggedIn, setLoggedIn] = useState(false);
+
+    useEffect(() => {
+        isLoggedIn().then((status) => {
+            console.log(status);
+            setLoggedIn(status);
+        });
+    }, []);
 
     return (
         <>
@@ -27,7 +34,10 @@ function App() {
 
                 <Routes>
                     <Route path="/" element={<Home />} />
-                    <Route path="/applications" element={<Applications />} />
+                    <Route
+                        path="/applications"
+                        element={loggedIn ? <Applications /> : <Login />}
+                    ></Route>
                     <Route path="/profile" element={<Profile />} />
                     <Route path="/login" element={<Login />} />
                     <Route path="/signup" element={<SignUp />} />
@@ -38,6 +48,13 @@ function App() {
             </main>
         </>
     );
+}
+
+async function isLoggedIn() {
+    let res = await fetch("/loggedIn");
+    let data = await res.json();
+    console.log(data);
+    return Promise.resolve(data.status);
 }
 
 export default App;

@@ -7,6 +7,7 @@ export default () => {
     // console.log(path.resolve(__dirname, "./src/assets/sass"));
 
     return defineConfig({
+        mode: "production",
         publicDir: "./src/assets",
         build: {
             outDir: "../public",
@@ -14,6 +15,7 @@ export default () => {
             assetsInlineLimit: 50000,
             emptyOutDir: true,
             rollupOptions: {
+                input: { main: "./src/main.jsx" },
                 output: {
                     format: "es",
                     entryFileNames: "[name].js",
