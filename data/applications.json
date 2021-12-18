@@ -1,12 +1,44 @@
 [
   {
-    "email": "abc@gmail.com",
+    "email": "admin1",
     "url": "www.google.com",
-    "status": "applied"
+    "company": "Google",
+    "title": "Software Engineer",
+    "status": true
   },
   {
-    "email": "abc@gmail.com",
+    "email": "admin1",
     "url": "www.google.com",
-    "status": "applied"
+    "company": "www.google.com",
+    "title": "Software Engineer",
+    "status": false
+  },
+  {
+    "email": "admin1",
+    "url": "www.google.com",
+    "company": "Google",
+    "title": "Software Engineer",
+    "status": false
+  },
+  {
+    "email": "admin1",
+    "url": "www.google.com",
+    "company": "Google",
+    "title": "Software Engineer",
+    "status": false
+  },
+  {
+    "email": "admin2",
+    "url": "www.google.com",
+    "company": "Netflix",
+    "title": "Software Engineer",
+    "status": false
+  },
+  {
+    "email": "admin2",
+    "url": "www.microsoft.com",
+    "company": "Microsoft",
+    "title": "Software Engineer",
+    "status": true
   }
 ]

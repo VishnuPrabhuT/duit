@@ -2,7 +2,7 @@ import "../sass/formfield.sass";
 
 function FormField(props) {
     return (
-        <div className={`formfield`}>
+        <div className={`formfield ${props.size ? props.size : ""}`}>
             <label htmlFor={props.name}>{props.label}</label>
             <input
                 id={props.name}

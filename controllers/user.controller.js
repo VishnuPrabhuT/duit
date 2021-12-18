@@ -44,9 +44,10 @@ exports.login = (req, res) => {
         (userObj) => {
             if (userObj) {
                 req.session.loggedIn = true;
-                req.session.email = req.body.username;
+                req.session.email = req.body.email;
 
                 let resObj = Object.assign({}, userObj._doc);
+                delete resObj.password;
                 resObj.msg = "Login Successful!";
 
                 res.status(200).json(resObj);

@@ -6,13 +6,16 @@ import FormButton from "../components/formbutton";
 
 import "../sass/login.sass";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-function Login() {
+function Login(props) {
     const [showMsg, setShowMsg] = useState(false);
     const [msg, setMsg] = useState("");
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+
+    const navigate = useNavigate();
 
     useEffect(() => {
         //createUser();
@@ -30,10 +33,12 @@ function Login() {
 
         setShowMsg(!data.status ? true : false);
         setMsg(data.msg ? data.msg : "");
-        setInterval(() => {
+        setTimeout(() => {
+            props.setLogin(true);
             setShowMsg(false);
             setMsg("");
-        }, 5000);
+            navigate("/");
+        }, 1500);
     }
 
     return (

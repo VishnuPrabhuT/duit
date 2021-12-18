@@ -4,7 +4,9 @@ const Application = mongoose.model("Application");
 
 exports.createApplication = (req, res) => {
     const application = new Application({
-        email: req.body.email,
+        email: req.session.email,
+        company: req.body.company,
+        title: req.body.title,
         url: req.body.url,
         status: req.body.status,
     });
@@ -50,8 +52,8 @@ exports.getApplication = (req, res) => {
 };
 
 exports.applications = (req, res) => {
-    Application.find()
-        .select("-__v")
+    console.log(req.session.email);
+    Application.find({ email: req.session.email })
         .then((applicationInfos) => {
             res.status(200).json(applicationInfos);
         })
@@ -67,7 +69,7 @@ exports.applications = (req, res) => {
 
 exports.deleteApplication = (req, res) => {
     console.log(req.params);
-    Application.findByIdAndRemove(req.params.id)
+    Application.findByIdAndRemove(req.body._id)
         .select("-__v-_id")
         .then((application) => {
             if (!application) {
@@ -93,6 +95,8 @@ exports.updateApplication = (req, res) => {
         req.body._id,
         {
             email: req.body.email,
+            company: req.body.company,
+            title: req.body.title,
             url: req.body.url,
             status: req.body.status,
         },

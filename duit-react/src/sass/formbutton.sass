@@ -9,5 +9,31 @@ button.formbutton
     border-radius: 4px
     cursor: pointer
 
+    &.add-icon
+        padding: 0
+        border-radius: 50%
+        background: $c_bg_green
+        color: $c_light
+        border-radius: 50%
+        width: 55px
+        height: 55px
+        font-size: 2rem
+
+    &.trash-icon
+        padding: 0
+        border-radius: 50%
+        background: no-repeat center/50% $trash_svg
+        background-color: #333
+        color: $c_light
+        border-radius: 50%
+        width: 55px
+        height: 55px
+        font-size: 2rem
+        box-shadow: none
+
+        &:hover
+            box-shadow: $box_shadow_red
+            background-color: #f2273859
+
     &:hover
         transform: scale(1.2)

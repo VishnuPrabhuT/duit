@@ -11,8 +11,6 @@ var indexRouter = require("./routes/index");
 var applicationRouter = require("./routes/application.router.js");
 var userRouter = require("./routes/user.router.js");
 
-var { isAuthenticated } = require("./authenticate.js");
-
 var app = express();
 
 const mongoose = require("mongoose");
@@ -44,7 +42,7 @@ app.use(
         name: "duit-sess-id",
         saveUninitialized: false,
         cookie: { maxAge: oneHour },
-        resave: false,
+        resave: true,
     })
 );
 

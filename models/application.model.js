@@ -3,8 +3,10 @@ const mongoose = require("mongoose");
 const ApplicationSchema = new mongoose.Schema(
     {
         email: String,
+        company: String,
+        title: String,
         url: String,
-        status: String,
+        status: Boolean,
     },
     { collection: "applications" }
 );
