@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www",
+    "start": "nodemon server.js",
     "build": "cd duit-react && yarn build"
   },
   "dependencies": {
@@ -19,5 +19,8 @@
     "morgan": "~1.9.1",
     "nodemon": "^2.0.15",
     "pug": "^3.0.2"
+  },
+  "devDependencies": {
+    "workbox-window": "^6.4.2"
   }
 }
