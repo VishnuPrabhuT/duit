@@ -30,8 +30,7 @@ function Applications() {
 
         data = await data.json();
 
-        apps.push(application);
-        console.log(applications);
+        apps.push(data);
         setApplications([...apps]);
         setUrl("");
         setCompany("");
@@ -61,12 +60,14 @@ function Applications() {
     }
 
     async function deleteApplication(_id) {
-        let apps = applications;
+        let apps = [];
         let application = {};
 
-        apps.forEach((app) => {
+        applications.forEach((app) => {
             if (app._id == _id) {
                 application = app;
+            } else {
+                apps.push(app);
             }
         });
 
