@@ -20,10 +20,13 @@ const { nextTick } = require("process");
 
 require("dotenv").config();
 
-mongoose.connect(process.env.DATABASE, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-});
+mongoose.connect(
+    "mongodb+srv://vishnu:qwerty220@cluster0.zlkpu.mongodb.net/duit?retryWrites=true&w=majority",
+    {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+    }
+);
 
 mongoose.connection
     .on("open", () => {
