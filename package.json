@@ -3,9 +3,9 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node server.js",
+    "start1": "node server.js",
     "build2": "cd duit-react && yarn && yarn build",
-    "build": "nohup node server.js > /dev/null 2>&1 &"
+    "start": "nohup node server.js > /dev/null 2>&1 &"
   },
   "dependencies": {
     "body-parser": "^1.19.1",
