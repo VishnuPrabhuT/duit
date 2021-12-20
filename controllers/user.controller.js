@@ -20,14 +20,16 @@ exports.signup = (req, res) => {
             user.save()
                 .then((data) => {
                     let resObj = Object.assign({}, data._doc);
+                    resObj.status = true;
                     resObj.msg = "Signed Up!";
 
                     res.status(200).json(resObj);
                 })
                 .catch((err) => {
                     res.status(500).json({
+                        status: false,
                         message: "Fail!",
-                        error: eer.message,
+                        error: err.message,
                     });
                 });
         }
@@ -48,6 +50,8 @@ exports.login = (req, res) => {
 
                 let resObj = Object.assign({}, userObj._doc);
                 delete resObj.password;
+
+                resObj.status = true;
                 resObj.msg = "Login Successful!";
 
                 res.status(200).json(resObj);

@@ -21,7 +21,7 @@ function Login(props) {
         //createUser();
     });
 
-    async function createUser() {
+    async function loginUser() {
         let data = await fetch("/api/login", {
             method: "POST",
             headers: { "content-type": "application/json" },
@@ -31,14 +31,23 @@ function Login(props) {
 
         console.log(data);
 
-        setShowMsg(!data.status ? true : false);
+        setShowMsg(true);
         setMsg(data.msg ? data.msg : "");
-        setTimeout(() => {
-            props.setLogin(true);
-            setShowMsg(false);
-            setMsg("");
-            navigate("/");
-        }, 1500);
+
+        if (data.status) {
+            setTimeout(() => {
+                setShowMsg(false);
+                setMsg("");
+                props.setLogin(true);
+
+                navigate("/");
+            }, 1500);
+        } else {
+            setTimeout(() => {
+                setShowMsg(false);
+                setMsg("");
+            }, 1500);
+        }
     }
 
     return (
@@ -62,7 +71,7 @@ function Login(props) {
                             setPassword(val);
                         }}
                     />
-                    <FormButton name="Login" onClickHandler={createUser} />
+                    <FormButton name="Login" onClickHandler={loginUser} />
                 </>
             ) : (
                 <h3>{msg}</h3>

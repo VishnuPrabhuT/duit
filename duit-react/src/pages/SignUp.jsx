@@ -1,11 +1,11 @@
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 
 import Card from "../components/card";
 import FormField from "../components/formfield";
 import FormButton from "../components/formbutton";
 
 import "../sass/signup.sass";
-import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function SignUp() {
     const [showMsg, setShowMsg] = useState(false);
@@ -13,6 +13,8 @@ function SignUp() {
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+
+    const navigate = useNavigate();
 
     useEffect(() => {
         //createUser();
@@ -30,10 +32,19 @@ function SignUp() {
 
         setShowMsg(data._id ? true : false);
         setMsg(data.msg ? data.msg : "");
-        setInterval(() => {
-            setShowMsg(false);
-            setMsg("");
-        }, 5000);
+
+        if (data.status) {
+            setTimeout(() => {
+                setShowMsg(false);
+                setMsg("");
+                navigate("/login");
+            }, 1500);
+        } else {
+            setTimeout(() => {
+                setShowMsg(false);
+                setMsg("");
+            }, 1500);
+        }
     }
 
     return (
