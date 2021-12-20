@@ -1,1 +1,1 @@
-web: node server.js
+web: nohup node server.js > /dev/null 2>&1 &
