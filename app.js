@@ -14,7 +14,6 @@ var userRouter = require("./routes/user.router.js");
 var app = express();
 
 const mongoose = require("mongoose");
-const { nextTick } = require("process");
 
 // app.use(cors());
 
