@@ -7,8 +7,9 @@
   },
   "scripts": {
     "start1": "node server.js",
-    "build2": "cd duit-react && yarn && yarn build",
-    "start": "serve -s build"
+    "build": "yarn && cd duit-react && yarn && yarn build",
+    "start": "serve -s build",
+    "heroku-postbuild": "yarn build"
   },
   "dependencies": {
     "body-parser": "^1.19.1",
