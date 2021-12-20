@@ -62,3 +62,13 @@ main
     main
         .application-wrapper
             grid-template-columns: 90vw
+
+            & .add-application
+                flex-direction: column
+
+            & .application-list
+                & details.application-card
+
+                    & summary
+                        display: flex
+                        flex-direction: column
