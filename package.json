@@ -3,8 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "nodemon server.js",
-    "build": "cd duit-react && yarn && yarn build"
+    "startt": "nodemon server.js",
+    "start": "cd duit-react && yarn && yarn build"
   },
   "dependencies": {
     "body-parser": "^1.19.1",
