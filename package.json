@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "nodemon server.js",
+    "start": "node server.js",
     "build2": "cd duit-react && yarn && yarn build",
     "build": "node server.js"
   },
