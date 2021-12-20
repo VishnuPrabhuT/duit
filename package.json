@@ -7,7 +7,7 @@
   },
   "scripts": {
     "start1": "node server.js",
-    "build": "yarn && cd duit-react && yarn && yarn build",
+    "build": "node server.js",
     "start": "serve -s build",
     "heroku-postbuild": "yarn build"
   },
