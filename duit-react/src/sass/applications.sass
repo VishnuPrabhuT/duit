@@ -1,0 +1,56 @@
+@import "_variables"
+
+main
+    margin: 5rem auto
+
+    .application-wrapper
+        display: grid
+        grid-template-columns: 50vw
+        grid-template-rows: 10vh auto
+        gap: 1rem
+
+        & .add-application
+            place-self: center
+            width: 100%
+            display: flex
+            justify-content: space-evenly
+            align-items: center
+
+        & .application-list
+            & details.application-card
+                margin: 2.5rem 1rem
+                background: $c_bg_light
+                border-radius: 8px
+                box-shadow: $box_shadow_white
+
+                & summary
+                    background: $c_bg_lighter
+                    border-radius: 8px
+                    display: flex
+                    align-content: center
+                    list-style: none
+                    font-size: $font_details
+
+                    & span.summary-company
+                        padding: 1rem 0
+                        margin: 0 2rem
+
+                    & span.summary-title
+                        padding: 1rem 0
+                        margin: 0 2rem
+
+                    & span.summary-status
+                        margin: auto 1rem
+                        width: 25px
+                        height: 25px
+
+                        &.applied
+                            border-radius: 50%
+                            background: no-repeat center/contain $tick_svg
+
+                        &.not-applied
+                            border-radius: 50%
+                            background: #b0a4a4
+
+                & .application-details
+                    padding: 1.5rem

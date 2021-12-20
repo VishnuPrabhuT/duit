@@ -118,11 +118,13 @@ function Applications() {
                         setUrl(val);
                     }}
                 />
-                <FormButton
-                    iconButton="add-icon"
-                    name="+"
-                    onClickHandler={createApplication}
-                />
+                <div>
+                    <FormButton
+                        iconButton="add-icon"
+                        name="+"
+                        onClickHandler={createApplication}
+                    />
+                </div>
             </div>
             <div className="application-list">
                 {applications.map((application) => {
@@ -132,19 +134,11 @@ function Applications() {
                             key={application._id}
                         >
                             <summary>
-                                <span className="summary-company">
-                                    <b>Company: </b>
-                                    {application.company}
-                                </span>
-                                <span className="summary-title">
-                                    <b>Title: </b> {application.title}
-                                </span>
-
                                 <span
                                     className={
                                         application.status
-                                            ? "applied"
-                                            : "not-applied"
+                                            ? "summary-status applied"
+                                            : "summary-status not-applied"
                                     }
                                     onClick={(e) => {
                                         e.preventDefault();
@@ -154,6 +148,14 @@ function Applications() {
                                         );
                                     }}
                                 ></span>
+                                <span className="summary-company">
+                                    <b>Company: </b>
+                                    {application.company}
+                                </span>
+                                <span className="summary-title">
+                                    <b>Title: </b> {application.title}
+                                </span>
+
                                 <FormButton
                                     iconButton="trash-icon"
                                     name=" "

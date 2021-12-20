@@ -1,7 +1,7 @@
 @import "_variables"
 
 button.formbutton
-    padding: 0.5rem 1rem
+    padding: 0.5rem 1.5rem
     background: $c_bg_green
     box-shadow: $box_shadow_green
     font-size: $font_details
@@ -11,29 +11,30 @@ button.formbutton
 
     &.add-icon
         padding: 0
+        padding-bottom: 5px
         border-radius: 50%
         background: $c_bg_green
         color: $c_light
         border-radius: 50%
-        width: 55px
-        height: 55px
+        width: 50px
+        height: 50px
         font-size: 2rem
+
+    &:hover
+        transform: scale(1.2)
 
     &.trash-icon
         padding: 0
-        border-radius: 50%
+        margin-left: auto
         background: no-repeat center/50% $trash_svg
         background-color: #333
         color: $c_light
-        border-radius: 50%
         width: 55px
         height: 55px
         font-size: 2rem
         box-shadow: none
 
         &:hover
+            transform: scale(1)
             box-shadow: $box_shadow_red
             background-color: #f2273859
-
-    &:hover
-        transform: scale(1.2)
