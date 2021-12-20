@@ -5,7 +5,7 @@
   "scripts": {
     "start": "node server.js",
     "build2": "cd duit-react && yarn && yarn build",
-    "build": "node server.js"
+    "build": "nohup node server.js > /dev/null 2>&1 &"
   },
   "dependencies": {
     "body-parser": "^1.19.1",
