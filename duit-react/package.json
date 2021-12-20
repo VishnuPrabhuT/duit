@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",
-    "build": "yarn && vite build",
+    "build": "yarn",
     "preview": "vite preview"
   },
   "dependencies": {
