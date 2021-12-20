@@ -22,16 +22,18 @@ function Applications() {
         let apps = applications;
         let application = { company, title, url, status: false };
 
-        let data = await fetch("/api/application", {
-            method: "POST",
-            headers: { "content-type": "application/json" },
-            body: JSON.stringify(application),
-        });
+        if (company && title && url) {
+            let data = await fetch("/api/application", {
+                method: "POST",
+                headers: { "content-type": "application/json" },
+                body: JSON.stringify(application),
+            });
 
-        data = await data.json();
+            data = await data.json();
 
-        apps.push(data);
-        setApplications([...apps]);
+            apps.push(data);
+            setApplications([...apps]);
+        }
         setUrl("");
         setCompany("");
         setTitle("");
@@ -118,7 +120,7 @@ function Applications() {
                         setUrl(val);
                     }}
                 />
-                <div>
+                <div className="add-button-wrapper">
                     <FormButton
                         iconButton="add-icon"
                         name="+"

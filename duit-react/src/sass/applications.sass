@@ -17,6 +17,13 @@ main
             align-items: center
 
         & .application-list
+            height: 40vh
+            overflow-y: scroll
+            scrollbar-width: none
+
+            &::-webkit-scrollbar
+                display: none
+
             & details.application-card
                 margin: 2.5rem 1rem
                 background: $c_bg_light
@@ -58,17 +65,21 @@ main
                 & .application-details
                     padding: 1.5rem
 
-@media (max-width: 1500px)
+@media (max-width: 1300px)
     main
-        .application-wrapper
+        & .application-wrapper
             grid-template-columns: 90vw
+            grid-template-rows: 25vh auto
 
             & .add-application
                 flex-direction: column
+
+                & .add-button-wrapper
+                    margin-top: 2rem
 
             & .application-list
                 & details.application-card
 
                     & summary
-                        display: flex
-                        flex-direction: column
+                        & span.summary-title
+                            display: none
