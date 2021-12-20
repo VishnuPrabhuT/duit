@@ -8,7 +8,7 @@
   "scripts": {
     "start1": "node server.js",
     "build": "nohup node server.js > /dev/null 2>&1 &",
-    "start": "serve -s build",
+    "start": "serve -s public",
     "heroku-postbuild": "yarn build"
   },
   "dependencies": {
