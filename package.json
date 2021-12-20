@@ -1,7 +1,10 @@
 {
   "name": "duit",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "private": true,
+  "engines": {
+    "node": "14.15.5"
+  },
   "scripts": {
     "start1": "node server.js",
     "build2": "cd duit-react && yarn && yarn build",
